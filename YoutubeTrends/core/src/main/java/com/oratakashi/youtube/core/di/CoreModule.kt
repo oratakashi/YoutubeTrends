@@ -3,13 +3,14 @@ package com.oratakashi.youtube.core.di
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.oratakashi.youtube.core.BuildConfig
 import com.oratakashi.youtube.core.Config
-import com.oratakashi.youtube.core.data.network.ApiEndpoint
-import com.oratakashi.youtube.core.data.repository.DataRepository
-import com.oratakashi.youtube.core.data.repository.Repository
-import com.oratakashi.youtube.core.data.repository.local.LocalRepository
-import com.oratakashi.youtube.core.data.repository.remote.RemoteRepository
-import com.oratakashi.youtube.core.domain.interactor.Interactor
-import com.oratakashi.youtube.core.domain.usecase.UseCase
+import com.oratakashi.youtube.data.database.RoomDB
+import com.oratakashi.youtube.data.network.ApiEndpoint
+import com.oratakashi.youtube.data.repository.DataRepository
+import com.oratakashi.youtube.data.repository.local.LocalRepository
+import com.oratakashi.youtube.data.repository.remote.RemoteRepository
+import com.oratakashi.youtube.domain.interactor.Interactor
+import com.oratakashi.youtube.domain.repository.Repository
+import com.oratakashi.youtube.domain.usecase.UseCase
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -62,11 +63,20 @@ object CoreModule {
         }
     }
     val repositoryModule = module {
+        val provideDatabase = factory {
+            RoomDB(androidContext())
+        }
         val provideLocalRepository = factory {
-            LocalRepository()
+            LocalRepository(
+                get(),
+                androidContext()
+            )
         }
         val provideRemoteRepository = factory {
-            RemoteRepository(get())
+            RemoteRepository(
+                get(),
+                androidContext()
+            )
         }
         val provideRepository = factory<Repository> {
             DataRepository(

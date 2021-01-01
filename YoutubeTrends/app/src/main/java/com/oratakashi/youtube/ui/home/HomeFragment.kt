@@ -17,10 +17,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.also {
-            viewModel.testLiveData.observe(viewLifecycleOwner, {
-                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-            })
-            viewModel.test()
+
         }
     }
 
@@ -32,8 +29,6 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater)
         return binding.root
     }
-
-    private val viewModel : HomeViewModel by viewModel()
 
     companion object {
         @JvmStatic
