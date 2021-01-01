@@ -4,13 +4,13 @@ import com.oratakashi.youtube.domain.magic.Map
 
 data class StatisticsModel(
     @Map("viewCount")
-    val viewCount: String,
+    val viewCount: String = "",
     @Map("likeCount")
-    val likeCount: String,
+    val likeCount: String = "",
     @Map("dislikeCount")
-    val dislikeCount: String,
+    val dislikeCount: String = "",
     @Map("favoriteCount")
-    val favoriteCount: String,
+    val favoriteCount: String = "",
     @Map("commentCount")
-    val commentCount: String
+    val commentCount: String = ""
 )

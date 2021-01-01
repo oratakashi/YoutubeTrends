@@ -4,7 +4,7 @@ import com.oratakashi.youtube.domain.magic.Map
 
 data class StandardModel(
     @Map("urlStandard")
-    val url: String,
-    val width: Int,
-    val height: Int
+    val url: String = "",
+    val width: Int = 0,
+    val height: Int = 0
 )
