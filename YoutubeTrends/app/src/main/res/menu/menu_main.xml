@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Beranda"
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:checked="true"
+        android:iconTint="@color/white"/>
+    <item android:title="Game"
+        android:id="@+id/nav_game"
+        android:icon="@drawable/ic_game"
+        android:iconTint="@color/white"/>
+</menu>

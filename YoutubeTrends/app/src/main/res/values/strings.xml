@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">YoutubeTrends</string>
+    <string name="title_favorite">favorite</string>
+    <string name="title_trending">Trending</string>
+    <string name="title_music">Music</string>
+    <string name="title_game">Game</string>
+    <string name="title_sport">Sport</string>
+    <string name="title_powered_by_dicoding">Powered by Dicoding</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
