@@ -3,6 +3,7 @@ package com.oratakashi.youtube.core
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import com.oratakashi.youtube.core.di.CoreModule
+import com.oratakashi.youtube.presentation.di.PresentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -22,9 +23,9 @@ class App : Application() {
                 CoreModule.repositoryModule,
                 CoreModule.domainModule
             ))
-//            modules(listOf(
-//                PresentationModule.viewModelModule
-//            ))
+            modules(listOf(
+                PresentationModule.viewModelModule
+            ))
         }
     }
 }

@@ -28,9 +28,11 @@ dependencies {
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2'
 
     //koin
-    implementation "org.koin:koin-core:2.1.6"
-    implementation "org.koin:koin-android:2.1.6"
-    implementation "org.koin:koin-android-viewmodel:2.1.6"
+    implementation "org.koin:koin-core:2.2.2"
+    implementation "org.koin:koin-android:2.2.2"
+    implementation "org.koin:koin-android-viewmodel:2.2.2"
+    implementation "org.koin:koin-androidx-viewmodel:2.2.2"
+    implementation "org.koin:koin-androidx-fragment:2.2.2"
 
     //Chucker
     implementation "com.github.chuckerteam.chucker:library:3.2.0"

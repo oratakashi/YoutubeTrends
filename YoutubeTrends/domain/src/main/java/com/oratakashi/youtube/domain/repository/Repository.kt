@@ -1,8 +1,8 @@
 package com.oratakashi.youtube.domain.repository
 
 import androidx.lifecycle.LiveData
-import com.oratakashi.youtube.domain.state.MainState
+import com.oratakashi.youtube.domain.state.DomainMainState
 
 interface Repository {
-    fun getTrends() : LiveData<MainState>
+    fun getTrends() : LiveData<DomainMainState>
 }

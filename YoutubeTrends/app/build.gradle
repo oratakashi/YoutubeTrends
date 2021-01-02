@@ -73,6 +73,7 @@ dependencies {
     //Core Module
     implementation project(":core")
     implementation project(":presentation")
+    implementation project(":domain")
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

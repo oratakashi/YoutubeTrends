@@ -8,8 +8,11 @@ import androidx.viewpager2.widget.ViewPager2
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.oratakashi.youtube.R
 import com.oratakashi.youtube.databinding.ActivityMainBinding
+import com.oratakashi.youtube.domain.repository.Repository
+import com.oratakashi.youtube.domain.usecase.UseCase
 import com.oratakashi.youtube.utils.ImageHelper
 import eightbitlab.com.blurview.RenderScriptBlur
+import org.koin.android.ext.android.inject
 
 
 class MainActivity : AppCompatActivity() {

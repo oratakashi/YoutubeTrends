@@ -4,7 +4,7 @@ import com.oratakashi.youtube.domain.magic.Map
 
 data class ItemModel(
     @Map("id")
-    val id: String,
-    val snipet: SnipetModel,
-    val statistics: StatisticsModel
+    val id: String = "",
+    var snippet: SnippetModel? = null,
+    var statistics: StatisticsModel? = null
 )
