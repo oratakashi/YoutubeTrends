@@ -56,24 +56,22 @@ dependencies {
     //Blur
     implementation 'com.eightbitlab:blurview:1.6.5'
 
+    //Meow Nav Bar
     implementation 'com.etebarian:meow-bottom-navigation:1.0.4'
 
-    //Bubble Nav Bar
-    implementation 'com.fxn769:bubbletabbar:1.0.5'
+    //Loading
+    implementation "com.airbnb.android:lottie:3.4.0"
+
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //Library EditText
     implementation 'com.ndroid:cool-view:1.0'
 
-
-
     // Shimmer
     implementation 'com.facebook.shimmer:shimmer:0.5.0@aar'
 
-    //Core Module
-    implementation project(":core")
+    //Import Presentation Module
     implementation project(":presentation")
-    implementation project(":domain")
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

@@ -13,4 +13,16 @@ class DataRepository (
     override fun getTrends(): LiveData<DomainMainState> {
         return remoteRepository.getTrends()
     }
+
+    override fun getGames(): LiveData<DomainMainState> {
+        return remoteRepository.getGames()
+    }
+
+    override fun getMusic(): LiveData<DomainMainState> {
+        return remoteRepository.getMusic()
+    }
+
+    override fun getSport(): LiveData<DomainMainState> {
+        return remoteRepository.getSport()
+    }
 }

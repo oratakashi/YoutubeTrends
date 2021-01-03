@@ -17,7 +17,7 @@ data class Snippet(
     @Map("description")
     val description: String,
     @field:SerializedName("channelTitle")
-    @Map("categoryId")
+    @Map("channelTitle")
     val channelTitle: String,
     @field:SerializedName("categoryId")
     @Map("categoryId")

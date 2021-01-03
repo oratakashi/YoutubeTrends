@@ -1,6 +1,9 @@
-package com.oratakashi.youtube.presentation.viewmodel.home
+package com.oratakashi.youtube.presentation.viewmodel.music
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.oratakashi.youtube.domain.state.DomainMainState
 import com.oratakashi.youtube.domain.usecase.UseCase
 import com.oratakashi.youtube.presentation.magic.toItems
@@ -11,7 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class HomeViewModel(
+class MusicViewModel(
     private val useCase: UseCase
 ) : ViewModel() {
 
@@ -19,20 +22,20 @@ class HomeViewModel(
         MutableLiveData()
     }
 
-    fun getTrends(lifecycleOwner: LifecycleOwner) : LiveData<MainState> {
-        useCase.getTrends().observe(lifecycleOwner, {
+    fun getMusic(lifecycleOwner: LifecycleOwner) : LiveData<MainState> {
+        useCase.getMusic().observe(lifecycleOwner, {
             when(it){
-                is DomainMainState.Loading  -> state.postValue(MainState.Loading)
-                is DomainMainState.Result   -> CoroutineScope(Dispatchers.IO).launch {
+                is DomainMainState.Loading      -> state.postValue(MainState.Loading)
+                is DomainMainState.Result       -> CoroutineScope(Dispatchers.IO).launch {
                     val data : MutableList<Items> = ArrayList()
-                    it.data.forEach { item  ->
+                    it.data.forEach { item ->
                         data.add(item.toItems())
                     }
                     withContext(Dispatchers.Main){
                         state.postValue(MainState.Result(data))
                     }
                 }
-                is DomainMainState.Error    -> state.postValue(MainState.Error(it.error))
+                is DomainMainState.Error        -> state.postValue(MainState.Error(it.error))
             }
         })
         return state

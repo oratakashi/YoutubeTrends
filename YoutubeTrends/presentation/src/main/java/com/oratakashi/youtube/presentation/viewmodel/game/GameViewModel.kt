@@ -1,4 +1,4 @@
-package com.oratakashi.youtube.presentation.viewmodel.home
+package com.oratakashi.youtube.presentation.viewmodel.game
 
 import androidx.lifecycle.*
 import com.oratakashi.youtube.domain.state.DomainMainState
@@ -11,16 +11,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class HomeViewModel(
+class GameViewModel(
     private val useCase: UseCase
 ) : ViewModel() {
-
     private val state : MutableLiveData<MainState> by lazy {
         MutableLiveData()
     }
 
-    fun getTrends(lifecycleOwner: LifecycleOwner) : LiveData<MainState> {
-        useCase.getTrends().observe(lifecycleOwner, {
+    fun getGames(lifecycleOwner: LifecycleOwner) : LiveData<MainState> {
+        useCase.getGames().observe(lifecycleOwner, {
             when(it){
                 is DomainMainState.Loading  -> state.postValue(MainState.Loading)
                 is DomainMainState.Result   -> CoroutineScope(Dispatchers.IO).launch {

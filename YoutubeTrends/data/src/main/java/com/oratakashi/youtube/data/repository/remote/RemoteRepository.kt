@@ -34,4 +34,52 @@ class RemoteRepository(
 
         return liveData
     }
+
+    override fun getGames(): LiveData<DomainMainState> {
+        val liveData: MutableLiveData<DomainMainState> = MutableLiveData()
+
+        endpoint.getTrends("20")
+            .map<DomainMainState> {
+                DomainMainState.Result(it.toItemModels())
+            }
+            .onErrorReturn(DomainMainState::Error)
+            .toFlowable()
+            .startWith(DomainMainState.Loading)
+            .subscribe(liveData::postValue)
+            .let { return@let disposable::add }
+
+        return liveData
+    }
+
+    override fun getMusic(): LiveData<DomainMainState> {
+        val liveData: MutableLiveData<DomainMainState> = MutableLiveData()
+
+        endpoint.getTrends("10")
+            .map<DomainMainState> {
+                DomainMainState.Result(it.toItemModels())
+            }
+            .onErrorReturn(DomainMainState::Error)
+            .toFlowable()
+            .startWith(DomainMainState.Loading)
+            .subscribe(liveData::postValue)
+            .let { return@let disposable::add }
+
+        return liveData
+    }
+
+    override fun getSport(): LiveData<DomainMainState> {
+        val liveData: MutableLiveData<DomainMainState> = MutableLiveData()
+
+        endpoint.getTrends("17")
+            .map<DomainMainState> {
+                DomainMainState.Result(it.toItemModels())
+            }
+            .onErrorReturn(DomainMainState::Error)
+            .toFlowable()
+            .startWith(DomainMainState.Loading)
+            .subscribe(liveData::postValue)
+            .let { return@let disposable::add }
+
+        return liveData
+    }
 }

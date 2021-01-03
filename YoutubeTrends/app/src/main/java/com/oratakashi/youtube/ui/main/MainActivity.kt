@@ -4,15 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.oratakashi.youtube.R
 import com.oratakashi.youtube.databinding.ActivityMainBinding
-import com.oratakashi.youtube.domain.repository.Repository
-import com.oratakashi.youtube.domain.usecase.UseCase
 import com.oratakashi.youtube.utils.ImageHelper
 import eightbitlab.com.blurview.RenderScriptBlur
-import org.koin.android.ext.android.inject
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.also {
+            reduceDragSensitivity()
             ImageHelper.apply {
                 getPicasso(
                     it.ivAvatar,
@@ -55,7 +54,6 @@ class MainActivity : AppCompatActivity() {
             it.ivFav.also { ivFav ->
                 ivFav.setOnClickListener {
                     try {
-
                         startActivity(
                             Intent(
                                 this,
@@ -102,5 +100,23 @@ class MainActivity : AppCompatActivity() {
             .setBlurRadius(25f)
             .setBlurAutoUpdate(true)
             .setHasFixedTransformationMatrix(true)
+    }
+
+    private fun reduceDragSensitivity() {
+        try {
+            val ff =
+                ViewPager2::class.java.getDeclaredField("mRecyclerView")
+            ff.isAccessible = true
+            val recyclerView = ff[binding.vpMain] as RecyclerView
+            val touchSlopField =
+                RecyclerView::class.java.getDeclaredField("mTouchSlop")
+            touchSlopField.isAccessible = true
+            val touchSlop = touchSlopField[recyclerView] as Int
+            touchSlopField[recyclerView] = touchSlop * 4
+        } catch (e: NoSuchFieldException) {
+            e.printStackTrace()
+        } catch (e: IllegalAccessException) {
+            e.printStackTrace()
+        }
     }
 }

@@ -19,6 +19,6 @@ class SplashActivity : AppCompatActivity() {
                  MainActivity::class.java
              ))
             finish()
-        }, 3000L)
+        }, 4000L)
     }
 }

@@ -1,5 +1,6 @@
 package com.oratakashi.youtube.data.magic.mapper
 
+import android.util.Log
 import com.oratakashi.youtube.data.magic.*
 import com.oratakashi.youtube.data.model.main.*
 import com.oratakashi.youtube.domain.magic.Map
@@ -131,9 +132,15 @@ fun generate(
             }
         }
 
+        var medium: MediumModel? = null
+        var standard: StandardModel? = null
+
+        if (data.thumbnails.medium != null) medium = data.thumbnails.medium.toMediumModel()
+        if (data.thumbnails.standard != null) standard = data.thumbnails.standard.toStandardModel()
+
         thumnails = ThumnailsModel(
-            data.thumbnails.medium.toMediumModel(),
-            data.thumbnails.standard.toStandardModel()
+            medium,
+            standard
         )
     }
 }

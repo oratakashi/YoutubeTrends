@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/clAdapter"
     tools:context=".ui.main.MainActivity">
 
     <ImageView
@@ -90,17 +91,16 @@
                 android:id="@+id/vpMain"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/toolbar"
-                android:layout_above="@+id/bnMenu"/>
+                android:layout_below="@id/toolbar"/>
             <com.etebarian.meowbottomnavigation.MeowBottomNavigation
                 android:id="@+id/bnMenu"
                 android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
-                app:mbn_backgroundBottomColor="#32FFFFFF"
+                app:mbn_backgroundBottomColor="#323232"
                 app:mbn_defaultIconColor="#FFFFFF"
-                app:mbn_rippleColor="#80BCBCBC"
+                app:mbn_rippleColor="#FFFFFF"
                 app:mbn_selectedIconColor="@color/white"
-                app:mbn_shadowColor="#1FFFFFFF"
+                app:mbn_shadowColor="#CCFF1100"
                 android:layout_height="wrap_content"/>
         </RelativeLayout>
     </eightbitlab.com.blurview.BlurView>

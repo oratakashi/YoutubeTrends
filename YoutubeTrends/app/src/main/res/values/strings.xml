@@ -6,6 +6,8 @@
     <string name="title_game">Game</string>
     <string name="title_sport">Sport</string>
     <string name="title_powered_by_dicoding">Powered by Dicoding</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="foo">Lorem Ipsum</string>
+    <string name="placeholder_info_adapter">%1$s \u2022 %2$s \u2022 %3$s</string>
 </resources>

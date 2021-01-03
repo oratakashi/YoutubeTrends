@@ -14,4 +14,16 @@ class LocalRepository(
     override fun getTrends(): LiveData<DomainMainState> {
         throw UnsupportedOperationException(context.getString(R.string.title_unsupported))
     }
+
+    override fun getGames(): LiveData<DomainMainState> {
+        throw UnsupportedOperationException(context.getString(R.string.title_unsupported))
+    }
+
+    override fun getMusic(): LiveData<DomainMainState> {
+        throw UnsupportedOperationException(context.getString(R.string.title_unsupported))
+    }
+
+    override fun getSport(): LiveData<DomainMainState> {
+        throw UnsupportedOperationException(context.getString(R.string.title_unsupported))
+    }
 }

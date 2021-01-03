@@ -61,7 +61,7 @@
     <dimen name="size_256">256dp</dimen>
     <dimen name="padding_3">3dp</dimen>
     <dimen name="size_150">150dp</dimen>
-    <dimen name="size_180">150dp</dimen>
+    <dimen name="size_180">180dp</dimen>
     <dimen name="margin_150">150dp</dimen>
     <dimen name="margin_250">250dp</dimen>
     <dimen name="margin_280">280dp</dimen>
@@ -116,4 +116,6 @@
     <dimen name="font_22">22sp</dimen>
     <dimen name="font_20">20sp</dimen>
     <dimen name="padding_25">25dp</dimen>
+    <dimen name="size_70">70dp</dimen>
+    <dimen name="margin_76">76dp</dimen>
 </resources>
