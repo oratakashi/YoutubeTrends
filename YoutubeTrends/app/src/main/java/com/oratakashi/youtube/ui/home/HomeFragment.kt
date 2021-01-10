@@ -1,5 +1,6 @@
 package com.oratakashi.youtube.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,16 +11,19 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.oratakashi.youtube.R
 import com.oratakashi.youtube.databinding.FragmentHomeBinding
+import com.oratakashi.youtube.presentation.model.main.Items
 import com.oratakashi.youtube.presentation.state.MainState
 import com.oratakashi.youtube.presentation.viewmodel.home.HomeViewModel
+import com.oratakashi.youtube.ui.detail.DetailActivity
+import com.oratakashi.youtube.ui.main.MainInterface
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), MainInterface {
 
     private lateinit var binding : FragmentHomeBinding
 
     private val adapter : HomeAdapter by lazy {
-        HomeAdapter()
+        HomeAdapter(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,6 +64,12 @@ class HomeFragment : Fragment() {
                 }
             })
         }
+    }
+
+    override fun onItemSelected(item: Items) {
+        startActivity(Intent(requireContext(), DetailActivity::class.java).also {
+            it.putExtra("data", item)
+        })
     }
 
     override fun onCreateView(

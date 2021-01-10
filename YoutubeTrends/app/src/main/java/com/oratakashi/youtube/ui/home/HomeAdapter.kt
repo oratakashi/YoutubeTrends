@@ -2,17 +2,19 @@ package com.oratakashi.youtube.ui.home
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.oratakashi.youtube.R
 import com.oratakashi.youtube.databinding.AdapterMainBinding
 import com.oratakashi.youtube.presentation.model.main.Items
+import com.oratakashi.youtube.ui.main.MainInterface
 import com.oratakashi.youtube.utils.Converter
 import com.oratakashi.youtube.utils.ImageHelper
 import org.koin.java.KoinJavaComponent.inject
 
-class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+class HomeAdapter(
+    private val parent : MainInterface
+) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder) {
@@ -39,6 +41,8 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
                 val marginParams = view.clAdapter.layoutParams as ViewGroup.MarginLayoutParams
                 marginParams.setMargins(0, 20, 0, 200)
             }
+
+            view.root.setOnClickListener { parent.onItemSelected(getItem(position)) }
         }
     }
 

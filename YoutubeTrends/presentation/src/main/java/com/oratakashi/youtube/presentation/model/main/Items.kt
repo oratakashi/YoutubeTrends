@@ -1,5 +1,9 @@
 package com.oratakashi.youtube.presentation.model.main
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Items(
     val id: String = "",
     val publishedAt: String = "",
@@ -15,4 +19,4 @@ data class Items(
     val dislikeCount: String = "",
     val favoriteCount: String = "",
     val commentCount: String = ""
-)
+) : Parcelable
