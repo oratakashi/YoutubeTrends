@@ -1,6 +1,5 @@
 package com.oratakashi.youtube.data.magic.mapper
 
-import android.util.Log
 import com.oratakashi.youtube.data.magic.*
 import com.oratakashi.youtube.data.model.main.*
 import com.oratakashi.youtube.domain.magic.Map

@@ -2,17 +2,19 @@ package com.oratakashi.youtube.ui.game
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.oratakashi.youtube.R
 import com.oratakashi.youtube.databinding.AdapterMainBinding
 import com.oratakashi.youtube.presentation.model.main.Items
+import com.oratakashi.youtube.ui.main.MainInterface
 import com.oratakashi.youtube.utils.Converter
 import com.oratakashi.youtube.utils.ImageHelper
 import org.koin.java.KoinJavaComponent
 
-class GameAdapter : RecyclerView.Adapter<GameAdapter.ViewHolder>() {
+class GameAdapter(
+    private val parent: MainInterface
+) : RecyclerView.Adapter<GameAdapter.ViewHolder>() {
     class ViewHolder(val view: AdapterMainBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -35,6 +37,7 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.ViewHolder>() {
                     "dd MMMM"
                 )
             )
+            view.root.setOnClickListener { parent.onItemSelected(getItem(position)) }
 
             if (position == data.size - 1) {
                 val marginParams = view.clAdapter.layoutParams as ViewGroup.MarginLayoutParams

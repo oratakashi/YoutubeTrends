@@ -1,7 +1,9 @@
 package com.oratakashi.youtube.data.magic
 
 import com.oratakashi.youtube.data.magic.mapper.generate
+import com.oratakashi.youtube.data.model.fav.Favorite
 import com.oratakashi.youtube.data.model.main.*
+import com.oratakashi.youtube.domain.model.favorite.FavoriteModel
 import com.oratakashi.youtube.domain.model.main.*
 
 /**
@@ -24,3 +26,9 @@ fun Items.toItemModel(): ItemModel =
 
 fun ResponseMain.toItemModels(): List<ItemModel> =
     generate(this)
+
+fun FavoriteModel.toFavorite(): Favorite =
+    generate(this, this::class, Favorite::class)
+
+fun Favorite.toFavoriteModel(): FavoriteModel =
+    generate(this, this::class, FavoriteModel::class)

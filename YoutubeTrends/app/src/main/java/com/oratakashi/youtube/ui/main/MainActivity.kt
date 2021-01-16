@@ -57,12 +57,16 @@ class MainActivity : AppCompatActivity() {
                         startActivity(
                             Intent(
                                 this,
-                                Class.forName("com.oratakashi.youtube.favorite.Favorite")
+                                Class.forName("com.oratakashi.youtube.favorite.FavoriteActivity")
                             )
                         )
-                    }catch (e : Exception){
+                    } catch (e: Exception) {
                         e.printStackTrace()
-                        Toast.makeText(applicationContext, "Module not installed!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            applicationContext,
+                            "Module not installed!",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
@@ -77,10 +81,10 @@ class MainActivity : AppCompatActivity() {
                 tabs.show(position, true)
                 binding.tvTitle.also { tvTitle ->
                     when (position) {
-                        0   -> tvTitle.text = getString(R.string.title_trending)
-                        1   -> tvTitle.text = getString(R.string.title_game)
-                        2   -> tvTitle.text = getString(R.string.title_music)
-                        3   -> tvTitle.text = getString(R.string.title_sport)
+                        0 -> tvTitle.text = getString(R.string.title_trending)
+                        1 -> tvTitle.text = getString(R.string.title_game)
+                        2 -> tvTitle.text = getString(R.string.title_music)
+                        3 -> tvTitle.text = getString(R.string.title_sport)
                     }
                 }
             }

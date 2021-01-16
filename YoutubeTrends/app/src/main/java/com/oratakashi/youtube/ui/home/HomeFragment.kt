@@ -2,7 +2,6 @@ package com.oratakashi.youtube.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,9 +19,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment(), MainInterface {
 
-    private lateinit var binding : FragmentHomeBinding
+    private lateinit var binding: FragmentHomeBinding
 
-    private val adapter : HomeAdapter by lazy {
+    private val adapter: HomeAdapter by lazy {
         HomeAdapter(this)
     }
 
@@ -59,7 +58,8 @@ class HomeFragment : Fragment(), MainInterface {
                         it.lavHome.playAnimation()
                         it.rvHome.visibility = View.GONE
                         state.error.printStackTrace()
-                        Toast.makeText(requireContext(), state.error.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), state.error.message, Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             })
@@ -81,7 +81,7 @@ class HomeFragment : Fragment(), MainInterface {
         return binding.root
     }
 
-    private val viewModel : HomeViewModel by viewModel()
+    private val viewModel: HomeViewModel by viewModel()
 
     companion object {
         @JvmStatic

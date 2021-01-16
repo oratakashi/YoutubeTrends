@@ -13,7 +13,7 @@ import com.oratakashi.youtube.utils.ImageHelper
 import org.koin.java.KoinJavaComponent.inject
 
 class HomeAdapter(
-    private val parent : MainInterface
+    private val parent: MainInterface
 ) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

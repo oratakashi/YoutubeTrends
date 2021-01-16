@@ -1,11 +1,12 @@
-package com.oratakashi.youtube.presentation.model.main
+package com.oratakashi.youtube.data.model.fav
 
-import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.oratakashi.youtube.domain.magic.Map
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
-data class Items(
+@Entity
+data class Favorite(
+    @PrimaryKey(autoGenerate = false)
     @Map("id")
     val id: String = "",
     @Map("publishedAt")
@@ -34,4 +35,4 @@ data class Items(
     val favoriteCount: String = "",
     @Map("commentCount")
     val commentCount: String = ""
-) : Parcelable
+)

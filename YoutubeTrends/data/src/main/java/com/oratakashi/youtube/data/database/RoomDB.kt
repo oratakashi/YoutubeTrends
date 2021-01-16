@@ -4,19 +4,19 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.oratakashi.youtube.data.model.fav.*
+import com.oratakashi.youtube.data.database.dao.FavoriteDao
+import com.oratakashi.youtube.data.model.fav.Favorite
 
 @Database(
     entities = [
-        Items::class,
-        Medium::class,
-        Snippet::class,
-        Standard::class,
-        Statistics::class
+        Favorite::class
     ],
     version = 1
 )
 abstract class RoomDB : RoomDatabase() {
+
+    abstract fun fav(): FavoriteDao
+
     companion object {
 
         @Volatile

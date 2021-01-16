@@ -8,10 +8,10 @@ import retrofit2.http.Query
 interface ApiEndpoint {
     @GET("videos")
     fun getTrends(
-        @Query("videoCategoryId") videoCategoryId : String = "",
-        @Query("part") part : String = "snippet,statistics,id",
-        @Query("chart") chart : String = "mostPopular",
-        @Query("regionCode") regionCode : String = "ID",
-        @Query("maxResults") maxResults : Int = 50
+        @Query("videoCategoryId") videoCategoryId: String = "",
+        @Query("part") part: String = "snippet,statistics,id",
+        @Query("chart") chart: String = "mostPopular",
+        @Query("regionCode") regionCode: String = "ID",
+        @Query("maxResults") maxResults: Int = 50
     ): Single<ResponseMain>
 }

@@ -1,5 +1,6 @@
 package com.oratakashi.youtube.ui.game
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,20 +8,21 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.oratakashi.youtube.R
 import com.oratakashi.youtube.databinding.FragmentGameBinding
+import com.oratakashi.youtube.presentation.model.main.Items
 import com.oratakashi.youtube.presentation.state.MainState
 import com.oratakashi.youtube.presentation.viewmodel.game.GameViewModel
-import com.oratakashi.youtube.ui.home.HomeAdapter
+import com.oratakashi.youtube.ui.detail.DetailActivity
+import com.oratakashi.youtube.ui.main.MainInterface
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class GameFragment : Fragment() {
+class GameFragment : Fragment(), MainInterface {
 
-    private lateinit var binding : FragmentGameBinding
+    private lateinit var binding: FragmentGameBinding
 
-    private val adapter : GameAdapter by lazy {
-        GameAdapter()
+    private val adapter: GameAdapter by lazy {
+        GameAdapter(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,11 +52,18 @@ class GameFragment : Fragment() {
                         it.lavGame.visibility = View.GONE
                         it.rvGame.visibility = View.VISIBLE
                         state.error.printStackTrace()
-                        Toast.makeText(requireContext(), state.error.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), state.error.message, Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             })
         }
+    }
+
+    override fun onItemSelected(item: Items) {
+        startActivity(Intent(requireContext(), DetailActivity::class.java).also {
+            it.putExtra("data", item)
+        })
     }
 
     override fun onCreateView(
@@ -65,7 +74,7 @@ class GameFragment : Fragment() {
         return binding.root
     }
 
-    private val viewModel : GameViewModel by viewModel()
+    private val viewModel: GameViewModel by viewModel()
 
     companion object {
         @JvmStatic

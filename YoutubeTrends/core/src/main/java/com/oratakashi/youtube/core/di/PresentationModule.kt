@@ -1,5 +1,6 @@
 package com.oratakashi.youtube.core.di
 
+import com.oratakashi.youtube.presentation.viewmodel.detail.DetailViewModel
 import com.oratakashi.youtube.presentation.viewmodel.game.GameViewModel
 import com.oratakashi.youtube.presentation.viewmodel.home.HomeViewModel
 import com.oratakashi.youtube.presentation.viewmodel.music.MusicViewModel
@@ -13,5 +14,6 @@ object PresentationModule {
         viewModel { GameViewModel(get()) }
         viewModel { MusicViewModel(get()) }
         viewModel { SportViewModel(get()) }
+        viewModel { DetailViewModel(get()) }
     }
 }

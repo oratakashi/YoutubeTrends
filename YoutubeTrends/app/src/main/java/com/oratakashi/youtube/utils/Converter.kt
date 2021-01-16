@@ -8,9 +8,9 @@ import java.util.*
 
 object Converter {
     @Throws(ParseException::class)
-    fun dateFormat(date: String, input : String, output : String) : String{
+    fun dateFormat(date: String, input: String, output: String): String {
         var format = SimpleDateFormat(input, Locale.getDefault())
-        var newDate : Date? = null
+        var newDate: Date? = null
 
         newDate = format.parse(date)
 

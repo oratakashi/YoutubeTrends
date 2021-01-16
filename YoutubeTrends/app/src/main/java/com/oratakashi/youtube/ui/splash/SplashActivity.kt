@@ -14,10 +14,12 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler(Looper.getMainLooper()).postDelayed({
-             startActivity(Intent(
-                 applicationContext,
-                 MainActivity::class.java
-             ))
+            startActivity(
+                Intent(
+                    applicationContext,
+                    MainActivity::class.java
+                )
+            )
             finish()
         }, 4000L)
     }

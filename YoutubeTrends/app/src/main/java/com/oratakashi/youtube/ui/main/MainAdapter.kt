@@ -13,10 +13,10 @@ class MainAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fra
         return 4
     }
 
-    override fun createFragment(position: Int): Fragment = when (position){
-        0       -> HomeFragment.newInstance()
-        1       -> GameFragment.newInstance()
-        2       -> MusicFragment.newInstance()
-        else    -> SportFragment.newInstance()
+    override fun createFragment(position: Int): Fragment = when (position) {
+        0 -> HomeFragment.newInstance()
+        1 -> GameFragment.newInstance()
+        2 -> MusicFragment.newInstance()
+        else -> SportFragment.newInstance()
     }
 }

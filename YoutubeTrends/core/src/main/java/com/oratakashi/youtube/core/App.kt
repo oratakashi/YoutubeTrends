@@ -7,6 +7,7 @@ import com.oratakashi.youtube.core.di.PresentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
 import org.koin.core.logger.Level
 
 class App : Application() {
@@ -18,12 +19,19 @@ class App : Application() {
         startKoin {
             androidLogger(Level.INFO)
             androidContext(this@App)
-            modules(listOf(
-                CoreModule.networkModule,
-                CoreModule.repositoryModule,
-                CoreModule.domainModule
-            ))
+            modules(
+                listOf(
+                    CoreModule.networkModule,
+                    CoreModule.repositoryModule,
+                    CoreModule.domainModule
+                )
+            )
             modules(PresentationModule.viewModelModule)
         }
+    }
+
+    override fun onTerminate() {
+        super.onTerminate()
+        stopKoin()
     }
 }

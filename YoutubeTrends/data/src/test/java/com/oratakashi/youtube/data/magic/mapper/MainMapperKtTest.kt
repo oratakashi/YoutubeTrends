@@ -4,7 +4,6 @@ import com.oratakashi.youtube.data.magic.toMediumModel
 import com.oratakashi.youtube.data.magic.toStandardModel
 import com.oratakashi.youtube.data.model.main.Medium
 import com.oratakashi.youtube.data.model.main.Standard
-import com.oratakashi.youtube.data.model.main.Thumbnails
 import com.oratakashi.youtube.domain.model.main.ItemModel
 import com.oratakashi.youtube.domain.model.main.SnippetModel
 import com.oratakashi.youtube.domain.model.main.ThumnailsModel
@@ -13,7 +12,7 @@ import org.junit.Test
 
 class MainMapperKtTest : TestCase() {
     @Test
-    fun testMapper(){
+    fun testMapper() {
         val medium = Medium(
             "https://google.com",
             100,
