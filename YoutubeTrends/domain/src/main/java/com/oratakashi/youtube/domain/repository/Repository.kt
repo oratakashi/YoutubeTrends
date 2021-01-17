@@ -14,4 +14,5 @@ interface Repository {
     fun delete(data : FavoriteModel)
 
     suspend fun getById(data : FavoriteModel) : List<FavoriteModel>
+    suspend fun getAll() : List<FavoriteModel>
 }

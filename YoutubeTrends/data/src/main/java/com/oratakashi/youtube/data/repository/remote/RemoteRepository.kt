@@ -96,4 +96,8 @@ class RemoteRepository(
     override suspend fun getById(data: FavoriteModel): List<FavoriteModel> {
         throw UnsupportedOperationException(context.getString(R.string.title_unsupported))
     }
+
+    override suspend fun getAll(): List<FavoriteModel> {
+        throw UnsupportedOperationException(context.getString(R.string.title_unsupported))
+    }
 }

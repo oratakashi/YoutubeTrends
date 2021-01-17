@@ -7,15 +7,11 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.detail.DetailActivity">
 
-
-
     <ImageView
         android:id="@+id/ivImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"/>
-
-
 
     <eightbitlab.com.blurview.BlurView
         android:id="@+id/vBackground"

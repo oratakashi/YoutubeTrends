@@ -38,6 +38,15 @@ class LocalRepository(
         }
     }
 
+    override suspend fun getAll(): List<FavoriteModel> {
+        val output: MutableList<FavoriteModel> = ArrayList()
+        return output.apply {
+            db.fav().getAll().forEach {
+                this.add(it.toFavoriteModel())
+            }
+        }
+    }
+
     override fun getTrends(): LiveData<DomainMainState> {
         throw UnsupportedOperationException(context.getString(R.string.title_unsupported))
     }

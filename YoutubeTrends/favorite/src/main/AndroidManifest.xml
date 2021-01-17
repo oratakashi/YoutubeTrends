@@ -14,7 +14,7 @@
     </dist:module>
 
     <application>
-        <activity android:name=".FavoriteActivity">
+        <activity android:name=".ui.main.FavoriteActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>

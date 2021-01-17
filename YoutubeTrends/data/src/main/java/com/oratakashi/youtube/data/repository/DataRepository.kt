@@ -38,4 +38,8 @@ class DataRepository(
     override suspend fun getById(data: FavoriteModel): List<FavoriteModel> {
         return localRepository.getById(data)
     }
+
+    override suspend fun getAll(): List<FavoriteModel> {
+        return localRepository.getAll()
+    }
 }

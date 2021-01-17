@@ -14,5 +14,7 @@ interface UseCase {
 
     fun add(data : FavoriteModel)
     fun checkDataByID(data : FavoriteModel)
+    fun getAll()
     fun getFavState() : LiveData<Boolean>
+    fun getFavListState() : LiveData<List<FavoriteModel>>
 }

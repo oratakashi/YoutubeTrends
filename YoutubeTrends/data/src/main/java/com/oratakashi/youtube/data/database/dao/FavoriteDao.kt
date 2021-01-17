@@ -13,4 +13,7 @@ interface FavoriteDao {
 
     @Query("Select * from favorite where id=:id")
     fun getById(id: String) : List<Favorite>
+
+    @Query("Select * from favorite")
+    fun getAll() : List<Favorite>
 }

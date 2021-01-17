@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                         startActivity(
                             Intent(
                                 this,
-                                Class.forName("com.oratakashi.youtube.favorite.FavoriteActivity")
+                                Class.forName("com.oratakashi.youtube.favorite.ui.main.FavoriteActivity")
                             )
                         )
                     } catch (e: Exception) {
