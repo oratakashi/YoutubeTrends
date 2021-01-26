@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.oratakashi.youtube.R
 import com.oratakashi.youtube.databinding.FragmentSportBinding
 import com.oratakashi.youtube.presentation.model.main.Items
 import com.oratakashi.youtube.presentation.state.MainState
@@ -26,13 +27,13 @@ class SportFragment : Fragment(), MainInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.also {
-            it.srSport.setOnRefreshListener {
-                it.srSport.isRefreshing = false
+        with(binding) {
+            srSport.setOnRefreshListener {
+                srSport.isRefreshing = false
                 viewModel.getSport(viewLifecycleOwner)
             }
 
-            it.rvSport.also { rvSport ->
+            rvSport.also {
                 rvSport.adapter = adapter
                 rvSport.layoutManager = LinearLayoutManager(requireContext())
             }
@@ -40,18 +41,22 @@ class SportFragment : Fragment(), MainInterface {
             viewModel.getSport(viewLifecycleOwner).observe(viewLifecycleOwner, { state ->
                 when (state) {
                     is MainState.Loading -> {
-                        it.lavSport.visibility = View.VISIBLE
-                        it.rvSport.visibility = View.GONE
+                        lavSport.setAnimation(R.raw.loading)
+                        lavSport.playAnimation()
+                        lavSport.visibility = View.VISIBLE
+                        rvSport.visibility = View.GONE
                     }
                     is MainState.Result -> {
-                        it.lavSport.visibility = View.GONE
-                        it.rvSport.visibility = View.VISIBLE
+                        lavSport.visibility = View.GONE
+                        rvSport.visibility = View.VISIBLE
 
                         adapter.submitList(state.data)
                     }
                     is MainState.Error -> {
-                        it.lavSport.visibility = View.GONE
-                        it.rvSport.visibility = View.VISIBLE
+                        lavSport.visibility = View.VISIBLE
+                        lavSport.setAnimation(R.raw.error)
+                        lavSport.playAnimation()
+                        rvSport.visibility = View.GONE
 
                         state.error.printStackTrace()
                         Toast.makeText(requireContext(), state.error.message, Toast.LENGTH_SHORT)

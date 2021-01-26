@@ -1,4 +1,4 @@
-package com.oratakashi.youtube.favorite.ui.all
+package com.oratakashi.youtube.favorite.ui.music
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,11 +10,11 @@ import com.oratakashi.youtube.favorite.ui.main.FavoriteInterface
 import com.oratakashi.youtube.favorite.utils.ImageHelper
 import com.oratakashi.youtube.presentation.model.main.Items
 import com.oratakashi.youtube.utils.Converter
-import org.koin.java.KoinJavaComponent.inject
+import org.koin.java.KoinJavaComponent
 
-class AllAdapter(
+class MusicAdapter(
     private val parent: FavoriteInterface
-) : RecyclerView.Adapter<AllAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<MusicAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder.view) {
@@ -40,10 +40,6 @@ class AllAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
-        AdapterMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-    )
-
     fun submitList(list: List<Items>) {
         data.clear()
         data.addAll(list)
@@ -58,7 +54,11 @@ class AllAdapter(
 
     private val data: MutableList<Items> = ArrayList()
 
-    private val context: Context by inject(Context::class.java)
+    private val context: Context by KoinJavaComponent.inject(Context::class.java)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
+        AdapterMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    )
 
     class ViewHolder(val view: AdapterMainBinding) : RecyclerView.ViewHolder(view.root)
 }

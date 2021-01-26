@@ -2,49 +2,81 @@ package com.oratakashi.youtube.data.repository.local
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.oratakashi.youtube.data.R
 import com.oratakashi.youtube.data.database.RoomDB
 import com.oratakashi.youtube.data.magic.toFavorite
-import com.oratakashi.youtube.data.magic.toFavoriteModel
+import com.oratakashi.youtube.data.magic.toFavoriteModels
 import com.oratakashi.youtube.domain.model.favorite.FavoriteModel
 import com.oratakashi.youtube.domain.repository.Repository
 import com.oratakashi.youtube.domain.state.DomainMainState
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 
 class LocalRepository(
     private val db: RoomDB,
     private val context: Context
 ) : Repository {
-    override fun add(data: FavoriteModel) {
-        CoroutineScope(Dispatchers.IO).launch {
-            db.fav().add(data.toFavorite())
-        }
+    private val disposable: CompositeDisposable by lazy {
+        CompositeDisposable()
     }
 
-    override fun delete(data: FavoriteModel) {
-        CoroutineScope(Dispatchers.IO).launch {
-            db.fav().delete(data.toFavorite())
-        }
-    }
-
-    override suspend fun getById(data: FavoriteModel): List<FavoriteModel> {
-        val output: MutableList<FavoriteModel> = ArrayList()
-        return output.apply {
-            db.fav().getById(data.toFavorite().id).forEach {
-                this.add(it.toFavoriteModel())
+    override fun add(data: FavoriteModel, state: MutableLiveData<Boolean>) {
+        db.fav().getById(data.toFavorite().id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .toFlowable()
+            .subscribe {
+                if (it.isEmpty()) {
+                    db.fav().add(data.toFavorite())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .map { true }
+                        .toFlowable()
+                        .subscribe(state::postValue)
+                        .let { return@let disposable::add }
+                } else {
+                    db.fav().delete(data.toFavorite())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .map { false }
+                        .toFlowable()
+                        .subscribe(state::postValue)
+                        .let { return@let disposable::add }
+                }
             }
-        }
+            .let { return@let disposable::add }
     }
 
-    override suspend fun getAll(): List<FavoriteModel> {
-        val output: MutableList<FavoriteModel> = ArrayList()
-        return output.apply {
-            db.fav().getAll().forEach {
-                this.add(it.toFavoriteModel())
-            }
-        }
+    override fun getById(data: FavoriteModel, state: MutableLiveData<Boolean>) {
+        db.fav().getById(data.toFavorite().id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map { it.isNotEmpty() }
+            .toFlowable()
+            .subscribe(state::postValue)
+            .let { return@let disposable::add }
+    }
+
+    override fun getAll(state: MutableLiveData<List<FavoriteModel>>) {
+        db.fav().getAll()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map { it.toFavoriteModels() }
+            .toFlowable()
+            .subscribe(state::postValue)
+            .let { return@let disposable::add }
+    }
+
+    override fun getByCategory(id: String, state: MutableLiveData<List<FavoriteModel>>) {
+        db.fav().getByCategory(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map { it.toFavoriteModels() }
+            .toFlowable()
+            .subscribe(state::postValue)
+            .let { return@let disposable::add }
     }
 
     override fun getTrends(): LiveData<DomainMainState> {

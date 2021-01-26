@@ -1,6 +1,7 @@
 package com.oratakashi.youtube.data.repository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.oratakashi.youtube.data.repository.local.LocalRepository
 import com.oratakashi.youtube.data.repository.remote.RemoteRepository
 import com.oratakashi.youtube.domain.model.favorite.FavoriteModel
@@ -27,19 +28,19 @@ class DataRepository(
         return remoteRepository.getSport()
     }
 
-    override fun add(data: FavoriteModel) {
-        return localRepository.add(data)
+    override fun add(data: FavoriteModel, state: MutableLiveData<Boolean>) {
+        return localRepository.add(data, state)
     }
 
-    override fun delete(data: FavoriteModel) {
-        return localRepository.delete(data)
+    override fun getById(data: FavoriteModel, state: MutableLiveData<Boolean>) {
+        localRepository.getById(data, state)
     }
 
-    override suspend fun getById(data: FavoriteModel): List<FavoriteModel> {
-        return localRepository.getById(data)
+    override fun getAll(state: MutableLiveData<List<FavoriteModel>>) {
+        localRepository.getAll(state)
     }
 
-    override suspend fun getAll(): List<FavoriteModel> {
-        return localRepository.getAll()
+    override fun getByCategory(id: String, state: MutableLiveData<List<FavoriteModel>>) {
+        localRepository.getByCategory(id, state)
     }
 }

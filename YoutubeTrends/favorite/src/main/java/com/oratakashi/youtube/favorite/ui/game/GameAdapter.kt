@@ -1,4 +1,4 @@
-package com.oratakashi.youtube.favorite.ui.all
+package com.oratakashi.youtube.favorite.ui.game
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -12,9 +12,9 @@ import com.oratakashi.youtube.presentation.model.main.Items
 import com.oratakashi.youtube.utils.Converter
 import org.koin.java.KoinJavaComponent.inject
 
-class AllAdapter(
+class GameAdapter(
     private val parent: FavoriteInterface
-) : RecyclerView.Adapter<AllAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<GameAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder.view) {
@@ -40,10 +40,6 @@ class AllAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
-        AdapterMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-    )
-
     fun submitList(list: List<Items>) {
         data.clear()
         data.addAll(list)
@@ -61,4 +57,8 @@ class AllAdapter(
     private val context: Context by inject(Context::class.java)
 
     class ViewHolder(val view: AdapterMainBinding) : RecyclerView.ViewHolder(view.root)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
+        AdapterMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    )
 }

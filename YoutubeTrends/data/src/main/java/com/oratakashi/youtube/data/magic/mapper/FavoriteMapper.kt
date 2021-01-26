@@ -1,6 +1,7 @@
 package com.oratakashi.youtube.data.magic.mapper
 
 import android.util.Log
+import com.oratakashi.youtube.data.magic.toFavoriteModel
 import com.oratakashi.youtube.data.model.fav.Favorite
 import com.oratakashi.youtube.domain.magic.Map
 import com.oratakashi.youtube.domain.model.favorite.FavoriteModel
@@ -49,7 +50,7 @@ fun generate(
     data: Favorite,
     source: KClass<out Favorite>,
     target: KClass<FavoriteModel>
-) : FavoriteModel {
+): FavoriteModel {
     return FavoriteModel().apply {
         source.declaredMemberProperties.forEach {
             if (it.findAnnotation<Map>() != null) {
@@ -79,4 +80,16 @@ fun generate(
             }
         }
     }
+}
+
+fun generate(
+    data: List<Favorite>
+): List<FavoriteModel> {
+    val output: MutableList<FavoriteModel> = ArrayList()
+
+    data.forEach {
+        output.add(it.toFavoriteModel())
+    }
+
+    return output
 }

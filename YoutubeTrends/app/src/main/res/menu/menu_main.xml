@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Beranda"
+    <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/ic_home"
         android:checked="true"
-        android:iconTint="@color/white"/>
-    <item android:title="Game"
+        android:icon="@drawable/ic_home"
+        android:iconTint="@color/white"
+        android:title="Beranda" />
+    <item
         android:id="@+id/nav_game"
         android:icon="@drawable/ic_game"
-        android:iconTint="@color/white"/>
+        android:iconTint="@color/white"
+        android:title="Game" />
 </menu>

@@ -82,9 +82,9 @@ class DetailActivity : AppCompatActivity() {
             }
 
             viewModel.getState(data, this@DetailActivity).observe(this@DetailActivity, {
-                when(it){
-                    true        -> ivFav.setBackgroundResource(R.drawable.ic_fav_on)
-                    false       -> ivFav.setBackgroundResource(R.drawable.ic_fav_off)
+                when (it) {
+                    true -> ivFav.setBackgroundResource(R.drawable.ic_fav_on)
+                    false -> ivFav.setBackgroundResource(R.drawable.ic_fav_off)
                 }
             })
 

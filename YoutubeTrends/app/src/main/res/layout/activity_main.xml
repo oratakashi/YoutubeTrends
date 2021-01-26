@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clAdapter"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/clAdapter"
     tools:context=".ui.main.MainActivity">
 
     <ImageView
@@ -19,21 +19,19 @@
         android:id="@+id/vBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <eightbitlab.com.blurview.BlurView
-            android:id="@+id/vLayer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#80000000">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/margin_10"
-                android:layout_marginTop="@dimen/padding_25"
+                android:layout_marginTop="@dimen/padding_33"
                 android:background="#59000000"
+                android:paddingTop="@dimen/margin_10"
                 android:paddingBottom="@dimen/margin_10">
 
                 <ImageView
@@ -68,40 +66,32 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/ivSearch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/margin_16"
-                    android:src="@drawable/ic_search"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/ivAvatar"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
                     android:id="@+id/ivFav"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_fav_off"
                     android:layout_marginEnd="@dimen/margin_16"
+                    android:src="@drawable/ic_fav_off"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/ivSearch"
+                    app:layout_constraintEnd_toStartOf="@+id/ivAvatar"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/vpMain"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/toolbar"/>
+                android:layout_below="@id/toolbar" />
+
             <com.etebarian.meowbottomnavigation.MeowBottomNavigation
                 android:id="@+id/bnMenu"
-                android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 app:mbn_backgroundBottomColor="#323232"
                 app:mbn_defaultIconColor="#FFFFFF"
                 app:mbn_rippleColor="#FFFFFF"
                 app:mbn_selectedIconColor="@color/white"
-                app:mbn_shadowColor="#CCFF1100"
-                android:layout_height="wrap_content"/>
+                app:mbn_shadowColor="#CCFF1100" />
         </RelativeLayout>
     </eightbitlab.com.blurview.BlurView>
 

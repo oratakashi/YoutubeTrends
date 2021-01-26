@@ -11,10 +11,10 @@ import com.oratakashi.youtube.favorite.ui.sport.SportFragment
 class FavoriteAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int = 4
 
-    override fun createFragment(position: Int): Fragment = when(position){
-        0       -> AllFragment.newInstance()
-        1       -> GameFragment.newInstance()
-        2       -> MusicFragment.newInstance()
-        else    -> SportFragment.newInstance()
+    override fun createFragment(position: Int): Fragment = when (position) {
+        0 -> AllFragment.newInstance()
+        1 -> GameFragment.newInstance()
+        2 -> MusicFragment.newInstance()
+        else -> SportFragment.newInstance()
     }
 }

@@ -14,24 +14,24 @@ import kotlinx.coroutines.withContext
 class GameViewModel(
     private val useCase: UseCase
 ) : ViewModel() {
-    private val state : MutableLiveData<MainState> by lazy {
+    private val state: MutableLiveData<MainState> by lazy {
         MutableLiveData()
     }
 
-    fun getGames(lifecycleOwner: LifecycleOwner) : LiveData<MainState> {
+    fun getGames(lifecycleOwner: LifecycleOwner): LiveData<MainState> {
         useCase.getGames().observe(lifecycleOwner, {
-            when(it){
-                is DomainMainState.Loading  -> state.postValue(MainState.Loading)
-                is DomainMainState.Result   -> CoroutineScope(Dispatchers.IO).launch {
-                    val data : MutableList<Items> = ArrayList()
-                    it.data.forEach { item  ->
+            when (it) {
+                is DomainMainState.Loading -> state.postValue(MainState.Loading)
+                is DomainMainState.Result -> CoroutineScope(Dispatchers.IO).launch {
+                    val data: MutableList<Items> = ArrayList()
+                    it.data.forEach { item ->
                         data.add(item.toItems())
                     }
-                    withContext(Dispatchers.Main){
+                    withContext(Dispatchers.Main) {
                         state.postValue(MainState.Result(data))
                     }
                 }
-                is DomainMainState.Error    -> state.postValue(MainState.Error(it.error))
+                is DomainMainState.Error -> state.postValue(MainState.Error(it.error))
             }
         })
         return state

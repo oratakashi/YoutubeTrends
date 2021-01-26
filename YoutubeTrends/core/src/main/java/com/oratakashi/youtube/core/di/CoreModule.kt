@@ -2,6 +2,7 @@ package com.oratakashi.youtube.core.di
 
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.oratakashi.youtube.core.BuildConfig
+import com.oratakashi.youtube.core.BuildConfig.BASE_URL
 import com.oratakashi.youtube.core.Config
 import com.oratakashi.youtube.data.database.RoomDB
 import com.oratakashi.youtube.data.network.ApiEndpoint
@@ -13,6 +14,7 @@ import com.oratakashi.youtube.domain.repository.Repository
 import com.oratakashi.youtube.domain.usecase.UseCase
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.logging.HttpLoggingInterceptor.Level
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -45,8 +47,8 @@ object CoreModule {
                 addInterceptor(
                     HttpLoggingInterceptor().apply {
                         level = when (BuildConfig.DEBUG) {
-                            true -> HttpLoggingInterceptor.Level.BODY
-                            false -> HttpLoggingInterceptor.Level.NONE
+                            true -> Level.BODY
+                            false -> Level.NONE
                         }
                     }
                 )
@@ -55,7 +57,7 @@ object CoreModule {
         val provideHttpAdapter = factory {
             val retrofit = Retrofit.Builder().apply {
                 client(get())
-                baseUrl(BuildConfig.BASE_URL)
+                baseUrl(BASE_URL)
                 addConverterFactory(GsonConverterFactory.create())
                 addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
             }.build()

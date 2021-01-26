@@ -32,3 +32,5 @@ fun FavoriteModel.toFavorite(): Favorite =
 
 fun Favorite.toFavoriteModel(): FavoriteModel =
     generate(this, this::class, FavoriteModel::class)
+
+fun List<Favorite>.toFavoriteModels(): List<FavoriteModel> = generate(this)

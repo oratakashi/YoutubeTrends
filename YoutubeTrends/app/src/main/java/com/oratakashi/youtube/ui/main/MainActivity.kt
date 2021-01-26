@@ -23,42 +23,44 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.also {
+        with(binding) {
             reduceDragSensitivity()
             ImageHelper.apply {
                 getPicasso(
-                    it.ivAvatar,
+                    this@with.ivAvatar,
                     "https://d17ivq9b7rppb3.cloudfront.net/original/jobs/fullstack_web_developer_160620212126.png"
                 )
                 getPicasso(
-                    it.ivImage,
+                    this@with.ivImage,
                     "https://forums.macrumors.com/attachments/8ce03f00-332e-49e5-a90a-430c3d10181b-jpeg.926035/"
                 )
             }
             setupBlur()
-            it.vpMain.also { vpMain ->
-                vpMain.adapter = MainAdapter(this)
-                vpMain.offscreenPageLimit = 4
+            vpMain.also {
+                it.adapter = MainAdapter(this@MainActivity)
+                it.offscreenPageLimit = 4
             }
-            it.bnMenu.also { bnMenu ->
+            bnMenu.also { bnMenu ->
                 bnMenu.add(MeowBottomNavigation.Model(0, R.drawable.ic_home))
                 bnMenu.add(MeowBottomNavigation.Model(1, R.drawable.ic_game))
                 bnMenu.add(MeowBottomNavigation.Model(2, R.drawable.ic_music))
                 bnMenu.add(MeowBottomNavigation.Model(3, R.drawable.ic_sport))
                 bnMenu.show(1, true)
-                bnMenu.setupViewPager(it.vpMain)
+                bnMenu.setupViewPager(vpMain)
                 bnMenu.setOnClickMenuListener { menu ->
-                    it.vpMain.setCurrentItem(menu.id, true)
+                    vpMain.setCurrentItem(menu.id, true)
                 }
             }
-            it.ivFav.also { ivFav ->
+            ivFav.also { ivFav ->
                 ivFav.setOnClickListener {
                     try {
                         startActivity(
                             Intent(
-                                this,
+                                applicationContext,
                                 Class.forName("com.oratakashi.youtube.favorite.ui.main.FavoriteActivity")
-                            )
+                            ).also {
+                                it.putExtra("data", vpMain.currentItem)
+                            }
                         )
                     } catch (e: Exception) {
                         e.printStackTrace()
@@ -93,12 +95,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupBlur() {
         binding.vBackground.setupWith(window.decorView.findViewById(android.R.id.content))
-            .setFrameClearDrawable(window.decorView.background)
-            .setBlurAlgorithm(RenderScriptBlur(this))
-            .setBlurRadius(25f)
-            .setBlurAutoUpdate(true)
-            .setHasFixedTransformationMatrix(true)
-        binding.vLayer.setupWith(window.decorView.findViewById(android.R.id.content))
             .setFrameClearDrawable(window.decorView.background)
             .setBlurAlgorithm(RenderScriptBlur(this))
             .setBlurRadius(25f)

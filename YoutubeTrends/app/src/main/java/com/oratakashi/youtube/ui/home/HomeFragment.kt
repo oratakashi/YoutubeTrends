@@ -27,36 +27,36 @@ class HomeFragment : Fragment(), MainInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.also {
 
-            it.srHome.setOnRefreshListener {
-                it.srHome.isRefreshing = false
+        with(binding) {
+            srHome.setOnRefreshListener {
+                srHome.isRefreshing = false
                 viewModel.getTrends(viewLifecycleOwner)
             }
 
-            it.rvHome.also { rvHome ->
-                rvHome.adapter = adapter
-                rvHome.layoutManager = LinearLayoutManager(requireContext())
+            rvHome.also {
+                it.adapter = adapter
+                it.layoutManager = LinearLayoutManager(requireContext())
             }
 
             viewModel.getTrends(viewLifecycleOwner).observe(viewLifecycleOwner, { state ->
                 when (state) {
                     is MainState.Loading -> {
-                        it.lavHome.setAnimation(R.raw.loading)
-                        it.lavHome.playAnimation()
-                        it.lavHome.visibility = View.VISIBLE
-                        it.rvHome.visibility = View.GONE
+                        lavHome.setAnimation(R.raw.loading)
+                        lavHome.playAnimation()
+                        lavHome.visibility = View.VISIBLE
+                        rvHome.visibility = View.GONE
                     }
                     is MainState.Result -> {
-                        it.lavHome.visibility = View.GONE
-                        it.rvHome.visibility = View.VISIBLE
+                        lavHome.visibility = View.GONE
+                        rvHome.visibility = View.VISIBLE
                         adapter.submitList(state.data)
                     }
                     is MainState.Error -> {
-                        it.lavHome.visibility = View.VISIBLE
-                        it.lavHome.setAnimation(R.raw.error)
-                        it.lavHome.playAnimation()
-                        it.rvHome.visibility = View.GONE
+                        lavHome.visibility = View.VISIBLE
+                        lavHome.setAnimation(R.raw.error)
+                        lavHome.playAnimation()
+                        rvHome.visibility = View.GONE
                         state.error.printStackTrace()
                         Toast.makeText(requireContext(), state.error.message, Toast.LENGTH_SHORT)
                             .show()

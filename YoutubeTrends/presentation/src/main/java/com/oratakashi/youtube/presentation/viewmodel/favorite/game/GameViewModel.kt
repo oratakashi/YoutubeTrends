@@ -1,4 +1,4 @@
-package com.oratakashi.youtube.presentation.viewmodel.favorite.all
+package com.oratakashi.youtube.presentation.viewmodel.favorite.game
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
@@ -8,20 +8,20 @@ import com.oratakashi.youtube.domain.usecase.UseCase
 import com.oratakashi.youtube.presentation.magic.toItems
 import com.oratakashi.youtube.presentation.model.main.Items
 
-class AllViewModel(
+class GameViewModel(
     private val useCase: UseCase
 ) : ViewModel() {
     private val state: MutableLiveData<List<Items>> by lazy {
         MutableLiveData()
     }
 
-    fun getAll(lifecycleOwner: LifecycleOwner): LiveData<List<Items>> {
+    fun getGames(lifecycleOwner: LifecycleOwner): LiveData<List<Items>> {
         useCase.getFavListState().observe(lifecycleOwner, { state.postValue(it.toItems()) })
-        useCase.getAll()
+        useCase.getByCategory("20")
         return state
     }
 
-    fun getAll() {
-        useCase.getAll()
+    fun getGames() {
+        useCase.getByCategory("20")
     }
 }

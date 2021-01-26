@@ -10,13 +10,13 @@ object Converter {
     @Throws(ParseException::class)
     fun dateFormat(date: String, input: String, output: String): String {
         var format = SimpleDateFormat(input, Locale.getDefault())
-        var newDate: Date? = null
+        var newDate: Date?
 
         newDate = format.parse(date)
 
         format = SimpleDateFormat(output, Locale.getDefault())
 
-        return format.format(newDate)
+        return format.format(newDate!!)
     }
 
     fun numberConvert(number: Number): String? {

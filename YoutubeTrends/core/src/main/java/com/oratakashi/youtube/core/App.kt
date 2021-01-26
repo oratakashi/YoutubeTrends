@@ -17,7 +17,12 @@ class App : Application() {
             AppCompatDelegate.MODE_NIGHT_YES
         )
         startKoin {
-            androidLogger(Level.INFO)
+            androidLogger(
+                when (BuildConfig.DEBUG) {
+                    true -> Level.INFO
+                    false -> Level.NONE
+                }
+            )
             androidContext(this@App)
             modules(
                 listOf(

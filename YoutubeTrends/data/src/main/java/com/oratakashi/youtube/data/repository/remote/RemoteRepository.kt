@@ -85,19 +85,19 @@ class RemoteRepository(
         return liveData
     }
 
-    override fun add(data: FavoriteModel) {
+    override fun add(data: FavoriteModel, state: MutableLiveData<Boolean>) {
         throw UnsupportedOperationException(context.getString(R.string.title_unsupported))
     }
 
-    override fun delete(data: FavoriteModel) {
+    override fun getById(data: FavoriteModel, state: MutableLiveData<Boolean>) {
         throw UnsupportedOperationException(context.getString(R.string.title_unsupported))
     }
 
-    override suspend fun getById(data: FavoriteModel): List<FavoriteModel> {
+    override fun getAll(state: MutableLiveData<List<FavoriteModel>>) {
         throw UnsupportedOperationException(context.getString(R.string.title_unsupported))
     }
 
-    override suspend fun getAll(): List<FavoriteModel> {
+    override fun getByCategory(id: String, state: MutableLiveData<List<FavoriteModel>>) {
         throw UnsupportedOperationException(context.getString(R.string.title_unsupported))
     }
 }

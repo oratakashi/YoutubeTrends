@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.oratakashi.youtube.R
 import com.oratakashi.youtube.databinding.FragmentGameBinding
 import com.oratakashi.youtube.presentation.model.main.Items
 import com.oratakashi.youtube.presentation.state.MainState
@@ -28,29 +29,33 @@ class GameFragment : Fragment(), MainInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.also {
-            it.srGame.setOnRefreshListener {
-                it.srGame.isRefreshing = false
+        with(binding) {
+            srGame.setOnRefreshListener {
+                srGame.isRefreshing = false
                 viewModel.getGames(viewLifecycleOwner)
             }
-            it.rvGame.also { rvGame ->
-                rvGame.adapter = adapter
-                rvGame.layoutManager = LinearLayoutManager(requireContext())
+            rvGame.also {
+                it.adapter = adapter
+                it.layoutManager = LinearLayoutManager(requireContext())
             }
             viewModel.getGames(viewLifecycleOwner).observe(viewLifecycleOwner, { state ->
                 when (state) {
                     is MainState.Loading -> {
-                        it.lavGame.visibility = View.VISIBLE
-                        it.rvGame.visibility = View.GONE
+                        lavGame.setAnimation(R.raw.loading)
+                        lavGame.playAnimation()
+                        lavGame.visibility = View.VISIBLE
+                        rvGame.visibility = View.GONE
                     }
                     is MainState.Result -> {
-                        it.lavGame.visibility = View.GONE
-                        it.rvGame.visibility = View.VISIBLE
+                        lavGame.visibility = View.GONE
+                        rvGame.visibility = View.VISIBLE
                         adapter.submitList(state.data)
                     }
                     is MainState.Error -> {
-                        it.lavGame.visibility = View.GONE
-                        it.rvGame.visibility = View.VISIBLE
+                        lavGame.visibility = View.VISIBLE
+                        lavGame.setAnimation(R.raw.error)
+                        lavGame.playAnimation()
+                        rvGame.visibility = View.GONE
                         state.error.printStackTrace()
                         Toast.makeText(requireContext(), state.error.message, Toast.LENGTH_SHORT)
                             .show()

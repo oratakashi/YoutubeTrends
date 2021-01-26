@@ -11,32 +11,34 @@
         android:id="@+id/ivImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop" />
 
     <eightbitlab.com.blurview.BlurView
         android:id="@+id/vBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="#80000000">
+            android:background="#80000000"
+            android:orientation="vertical">
 
             <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
                 android:id="@+id/ytPlayer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:enableAutomaticInitialization="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:showFullScreenButton="true"
-                app:enableAutomaticInitialization="false"
                 app:showYouTubeButton="false" />
 
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -54,13 +56,13 @@
                         android:id="@+id/tvTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/foo"
-                        android:textSize="@dimen/font_18"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="@dimen/margin_16"
+                        android:layout_marginEnd="@dimen/margin_16"
                         android:fontFamily="@font/bold"
                         android:paddingEnd="@dimen/size_24"
-                        android:layout_marginTop="@dimen/margin_16"
-                        android:layout_marginStart="@dimen/margin_16"
-                        android:layout_marginEnd="@dimen/margin_16"
+                        android:text="@string/foo"
+                        android:textSize="@dimen/font_18"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -70,21 +72,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="@dimen/margin_5"
                         android:layout_marginEnd="@dimen/margin_16"
                         android:fontFamily="@font/regular"
+                        android:text="@string/placeholder_info_adapter"
                         android:textSize="@dimen/font_12"
-                        android:layout_marginTop="@dimen/margin_5"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-                        android:text="@string/placeholder_info_adapter" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
                     <LinearLayout
                         android:id="@+id/linearLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_15"
                         android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="@dimen/margin_15"
                         android:layout_marginEnd="@dimen/margin_16"
                         android:orientation="horizontal"
                         android:weightSum="4"
@@ -108,10 +110,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/margin_5"
-                                android:text="@string/foo"
                                 android:fontFamily="@font/regular"
-                                android:textSize="@dimen/font_12"
-                                android:textAlignment="center" />
+                                android:text="@string/foo"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/font_12" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -131,10 +133,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/margin_5"
-                                android:text="@string/foo"
                                 android:fontFamily="@font/regular"
-                                android:textSize="@dimen/font_12"
-                                android:textAlignment="center" />
+                                android:text="@string/foo"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/font_12" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -154,10 +156,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/margin_5"
-                                android:text="@string/foo"
                                 android:fontFamily="@font/regular"
-                                android:textSize="@dimen/font_12"
-                                android:textAlignment="center" />
+                                android:text="@string/foo"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/font_12" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -178,10 +180,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/margin_5"
-                                android:text="@string/title_favorite"
                                 android:fontFamily="@font/regular"
-                                android:textSize="@dimen/font_12"
-                                android:textAlignment="center" />
+                                android:text="@string/title_favorite"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/font_12" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -198,13 +200,13 @@
                         android:id="@+id/tvDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/foo"
-                        android:fontFamily="@font/regular"
-                        android:textSize="@dimen/font_14"
-                        android:layout_marginTop="@dimen/margin_16"
                         android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="@dimen/margin_16"
                         android:layout_marginEnd="@dimen/margin_16"
+                        android:fontFamily="@font/regular"
                         android:paddingBottom="@dimen/margin_16"
+                        android:text="@string/foo"
+                        android:textSize="@dimen/font_14"
                         app:layout_constraintTop_toBottomOf="@+id/view" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </ScrollView>
@@ -215,8 +217,8 @@
         android:id="@+id/ivBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_back"
-        android:layout_marginTop="@dimen/margin_16"
         android:layout_marginStart="@dimen/margin_16"
-        android:contentDescription="@string/title_icon"/>
+        android:layout_marginTop="@dimen/margin_16"
+        android:contentDescription="@string/title_icon"
+        android:src="@drawable/ic_back" />
 </RelativeLayout>
