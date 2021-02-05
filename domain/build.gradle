@@ -5,6 +5,7 @@ plugins {
 }
 
 apply from: '../shared_dependencies.gradle'
+apply from: '../lint_option.gradle'
 
 android {
     compileSdkVersion 30
@@ -33,12 +34,16 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    lintOptions {
-        abortOnError false
-        checkReleaseBuilds false
-    }
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude("META-INF/*.kotlin_module")
     }
 }
 
