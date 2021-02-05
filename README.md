@@ -26,7 +26,9 @@
  Comingsoon
  <br>
  
+ ### CI/CD Testing
  ![YoutubeTrends CI](https://github.com/oratakashi/YoutubeTrends/workflows/YoutubeTrends%20CI/badge.svg)
+ [![YoutubeTrends CI](https://circleci.com/gh/oratakashi/YoutubeTrends.svg?style=svg)](https://circleci.com/gh/oratakashi/YoutubeTrends)
  
  ### Apps Feature:
 
