@@ -1,4 +1,0 @@
-include ':Favorite'
-include ':core'
-include ':app'
-rootProject.name = "YoutubeTrends"
