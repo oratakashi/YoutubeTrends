@@ -56,10 +56,6 @@ android {
     kapt {
         useBuildCache true
     }
-    dexOptions {
-        preDexLibraries true
-        jumboMode false
-    }
 }
 
 dependencies {
