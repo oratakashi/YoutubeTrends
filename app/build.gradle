@@ -53,6 +53,13 @@ android {
         exclude("META-INF/*.kotlin_module")
     }
     dynamicFeatures = [':favorite']
+    kapt {
+        useBuildCache true
+    }
+    dexOptions {
+        preDexLibraries true
+        jumboMode false
+    }
 }
 
 dependencies {
