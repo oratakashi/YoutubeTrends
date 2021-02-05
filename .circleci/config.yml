@@ -5,7 +5,11 @@ orbs:
  
 jobs:
   build:
-    executor: android/android
+    docker:
+      - image: circleci/android:api-29
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout
       - restore_cache:
