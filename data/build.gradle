@@ -35,6 +35,12 @@ android {
         abortOnError false
         checkReleaseBuilds false
     }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
 }
 
 dependencies {
