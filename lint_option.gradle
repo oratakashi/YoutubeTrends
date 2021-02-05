@@ -4,10 +4,6 @@ android {
 //        abortOnError false
 //    }
     lintOptions {
-        abortOnError false
-        checkReleaseBuilds false
-        ignoreWarnings true
-        checkAllWarnings false
-        warningsAsErrors false
+        tasks.lint.enabled = false
     }
 }
