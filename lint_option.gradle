@@ -1,0 +1,9 @@
+android {
+//    lintOptions {
+//        checkReleaseBuilds false
+//        abortOnError false
+//    }
+    lintOptions {
+        tasks.lint.enabled = false
+    }
+}
