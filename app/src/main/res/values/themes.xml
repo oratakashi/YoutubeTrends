@@ -18,26 +18,8 @@
         <item name="android:windowDisablePreview">true</item>
     </style>
 
-    <style name="coolEditTextFlat" parent="Base.Widget.AppCompat.EditText">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="android:padding">8dp</item>
-        <item name="android:background">@color/white</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textColorHint">@color/hint</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:fontFamily">@font/regular</item>
-        <item name="border_color">@color/grey</item>
-        <item name="border_radius">40</item>
-        <item name="border_stroke">3</item>
-    </style>
-
     <style name="Theme.YoutubeTrends.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
-    <style name="Theme.YoutubeTrends.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.YoutubeTrends.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
