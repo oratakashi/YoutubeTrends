@@ -26,9 +26,11 @@
  Comingsoon
  <br>
  
- ### CI/CD Testing
+ ### Continuous Integration
  ![YoutubeTrends CI](https://github.com/oratakashi/YoutubeTrends/workflows/YoutubeTrends%20CI/badge.svg)
  [![YoutubeTrends CI](https://circleci.com/gh/oratakashi/YoutubeTrends.svg?style=svg)](https://circleci.com/gh/oratakashi/YoutubeTrends)
+ [![Build Status](https://travis-ci.com/oratakashi/YoutubeTrends.svg?branch=main)](https://travis-ci.com/oratakashi/YoutubeTrends)
+ [![buddy pipeline](https://app.buddy.works/davidcreazy/youtubetrends/pipelines/pipeline/307514/badge.svg?token=fd9c39af57d10e781b375d678dcca22dfa2420248f5aa0bd5991d23ffc72e3ad "buddy pipeline")](https://app.buddy.works/davidcreazy/youtubetrends/pipelines/pipeline/307514)
  
  ### Apps Feature:
 
