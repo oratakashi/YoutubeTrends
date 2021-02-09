@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.oratakashi.youtube.core.di.FavoriteModule
-import com.oratakashi.youtube.favorite.databinding.FragmentMusicBinding
+import com.oratakashi.youtube.favorite.databinding.FragmentFavMusicBinding
 import com.oratakashi.youtube.favorite.ui.main.FavoriteInterface
 import com.oratakashi.youtube.presentation.model.main.Items
 import com.oratakashi.youtube.presentation.viewmodel.favorite.music.MusicViewModel
@@ -19,7 +19,7 @@ import org.koin.core.context.loadKoinModules
 
 class MusicFragment : Fragment(), FavoriteInterface {
 
-    lateinit var binding: FragmentMusicBinding
+    lateinit var binding: FragmentFavMusicBinding
 
     private val adapter: MusicAdapter by lazy {
         MusicAdapter(this)
@@ -40,7 +40,7 @@ class MusicFragment : Fragment(), FavoriteInterface {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMusicBinding.inflate(layoutInflater)
+        binding = FragmentFavMusicBinding.inflate(layoutInflater)
         return binding.root
     }
 

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.oratakashi.youtube.core.di.FavoriteModule
-import com.oratakashi.youtube.favorite.databinding.FragmentSportBinding
+import com.oratakashi.youtube.favorite.databinding.FragmentFavSportBinding
 import com.oratakashi.youtube.favorite.ui.main.FavoriteInterface
 import com.oratakashi.youtube.presentation.model.main.Items
 import com.oratakashi.youtube.presentation.viewmodel.favorite.sport.SportViewModel
@@ -19,7 +19,7 @@ import org.koin.core.context.loadKoinModules
 
 class SportFragment : Fragment(), FavoriteInterface {
 
-    private lateinit var binding: FragmentSportBinding
+    private lateinit var binding: FragmentFavSportBinding
 
     private val adapter: SportAdapter by lazy {
         SportAdapter(this)
@@ -40,7 +40,7 @@ class SportFragment : Fragment(), FavoriteInterface {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSportBinding.inflate(layoutInflater)
+        binding = FragmentFavSportBinding.inflate(layoutInflater)
         return binding.root
     }
 
