@@ -22,6 +22,9 @@ jobs:
             - ~/.android/build-cache
             - ~/.android/cache
       - run:
+          name: Clean Cache
+          command: ./gradlew clean
+      - run:
           name: Run Build
           command: ./gradlew build
       - store_artifacts: 
