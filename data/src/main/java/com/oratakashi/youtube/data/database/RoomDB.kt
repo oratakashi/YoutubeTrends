@@ -6,6 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.oratakashi.youtube.data.database.dao.FavoriteDao
 import com.oratakashi.youtube.data.model.fav.Favorite
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 
 @Database(
     entities = [
@@ -35,7 +37,10 @@ abstract class RoomDB : RoomDatabase() {
             "YoutubeTrendsFav.db"
         )
             .fallbackToDestructiveMigration()
+            .openHelperFactory(provideFactory())
             .build()
 
+        private fun providePassPhrase() : ByteArray = SQLiteDatabase.getBytes("dicoding".toCharArray())
+        private fun provideFactory() : SupportFactory = SupportFactory(providePassPhrase())
     }
 }

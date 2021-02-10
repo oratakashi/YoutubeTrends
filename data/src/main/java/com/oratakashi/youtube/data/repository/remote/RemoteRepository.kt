@@ -40,7 +40,7 @@ class RemoteRepository(
     override fun getGames(): LiveData<DomainMainState> {
         val liveData: MutableLiveData<DomainMainState> = MutableLiveData()
 
-        endpoint.getTrends("20")
+        endpoint.getTrendsCategory("20")
             .map<DomainMainState> {
                 DomainMainState.Result(it.toItemModels())
             }
@@ -56,7 +56,7 @@ class RemoteRepository(
     override fun getMusic(): LiveData<DomainMainState> {
         val liveData: MutableLiveData<DomainMainState> = MutableLiveData()
 
-        endpoint.getTrends("10")
+        endpoint.getTrendsCategory("10")
             .map<DomainMainState> {
                 DomainMainState.Result(it.toItemModels())
             }
@@ -72,7 +72,7 @@ class RemoteRepository(
     override fun getSport(): LiveData<DomainMainState> {
         val liveData: MutableLiveData<DomainMainState> = MutableLiveData()
 
-        endpoint.getTrends("17")
+        endpoint.getTrendsCategory("17")
             .map<DomainMainState> {
                 DomainMainState.Result(it.toItemModels())
             }

@@ -3,6 +3,7 @@ package com.oratakashi.youtube.core.di
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.oratakashi.youtube.core.BuildConfig
 import com.oratakashi.youtube.core.BuildConfig.BASE_URL
+import com.oratakashi.youtube.core.BuildConfig.DOMAIN
 import com.oratakashi.youtube.core.Config
 import com.oratakashi.youtube.data.database.RoomDB
 import com.oratakashi.youtube.data.network.ApiEndpoint
@@ -29,16 +30,24 @@ object CoreModule {
                 retryOnConnectionFailure(true)
                 readTimeout(30, TimeUnit.SECONDS)
                 writeTimeout(30, TimeUnit.SECONDS)
+                certificatePinner(
+                    CertificatePinner.Builder()
+                        .add(DOMAIN, "sha256/CbnjqjxEJ80gtjbhZp4MLe8+6a99ZweUM4te93gQSfY=")
+                        .add(DOMAIN, "sha256/6uD6luGCoq+QjL1ONKLMPp3M+TD/qNPcl2esQIKyAsE=")
+                        .add(DOMAIN, "sha256/9WxeoOnY+k/hGeN3QHGWodl6/1PUkaQsUHXmEuKrTVI=")
+                        .add(DOMAIN, "sha256/uzHSo4am8R/lVc3TUzYfDeCKysJDuoTE5ejw/KKJscE=")
+                        .add(DOMAIN, "sha256/qUyegvl9IEcp4Dsw5mAnJsy3FLg/x8TM+S0cy5NlEdk=")
+                        .add(DOMAIN, "sha256/MXCwOn0ZY5FXx/FAssfigQXHqJ9XoErm0/CYQVRUSMA=")
+                        .build()
+                )
                 addInterceptor(
-                    object : Interceptor {
-                        override fun intercept(chain: Interceptor.Chain): Response {
-                            var request: Request = chain.request()
-                            val url: HttpUrl = request.url.newBuilder()
-                                .addQueryParameter("key", Config.key)
-                                .build()
-                            request = request.newBuilder().url(url).build()
-                            return chain.proceed(request)
-                        }
+                    Interceptor { chain ->
+                        var request: Request = chain.request()
+                        val url: HttpUrl = request.url.newBuilder()
+                            .addQueryParameter("key", Config.key)
+                            .build()
+                        request = request.newBuilder().url(url).build()
+                        chain.proceed(request)
                     }
                 )
                 if (BuildConfig.DEBUG) addInterceptor(

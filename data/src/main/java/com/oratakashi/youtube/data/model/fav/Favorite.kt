@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.oratakashi.youtube.domain.magic.Map
 
-@Entity
+@Entity(tableName = "favorite")
 data class Favorite(
     @PrimaryKey(autoGenerate = false)
     @Map("id")

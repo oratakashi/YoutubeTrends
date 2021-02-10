@@ -1,6 +1,7 @@
 package com.oratakashi.youtube.data.repository.local
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.oratakashi.youtube.data.R
@@ -54,6 +55,11 @@ class LocalRepository(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .map { it.isNotEmpty() }
+            .onErrorReturn {
+                it.printStackTrace()
+                Log.e("debug", "error : ${it.message}")
+                false
+            }
             .toFlowable()
             .subscribe(state::postValue)
             .let { return@let disposable::add }
