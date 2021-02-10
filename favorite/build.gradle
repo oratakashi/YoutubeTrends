@@ -8,6 +8,14 @@ apply from: '../shared_dependencies.gradle'
 apply from: '../lint_option.gradle'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('/Volumes/Data/Me/Tutorial Kotlin/Submission/MADE/KeyStore')
+            storePassword 'admin12'
+            keyAlias 'prod'
+            keyPassword 'admin12'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
@@ -21,12 +29,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -47,6 +49,9 @@ android {
         exclude 'META-INF/notice.txt'
         exclude 'META-INF/ASL2.0'
         exclude("META-INF/*.kotlin_module")
+    }
+    lintOptions {
+        abortOnError false
     }
 }
 

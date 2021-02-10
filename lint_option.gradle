@@ -5,5 +5,7 @@ android {
 //    }
     lintOptions {
         tasks.lint.enabled = false
+        checkReleaseBuilds false
+        abortOnError false
     }
 }

@@ -5,8 +5,17 @@ plugins {
 }
 
 apply from: '../shared_dependencies.gradle'
+apply from: '../lint_option.gradle'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('/Volumes/Data/Me/Tutorial Kotlin/Submission/MADE/KeyStore')
+            storePassword 'admin12'
+            keyAlias 'prod'
+            keyPassword 'admin12'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
@@ -25,6 +34,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField 'String', 'BASE_URL', '"https://youtube.googleapis.com/youtube/v3/"'
+            signingConfig signingConfigs.release
         }
         debug {
             buildConfigField 'String', 'BASE_URL', '"https://youtube.googleapis.com/youtube/v3/"'
@@ -37,10 +47,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    lintOptions {
-        abortOnError false
-        checkReleaseBuilds false
-    }
+//    lintOptions {
+//        abortOnError false
+//        checkReleaseBuilds false
+//    }
 }
 
 dependencies {

@@ -6,6 +6,14 @@ plugins {
 apply from: '../shared_dependencies.gradle'
 apply from: '../lint_option.gradle'
 android {
+    signingConfigs {
+        release {
+            storeFile file('/Volumes/Data/Me/Tutorial Kotlin/Submission/MADE/KeyStore')
+            storePassword 'admin12'
+            keyAlias 'prod'
+            keyPassword 'admin12'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
@@ -23,6 +31,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
