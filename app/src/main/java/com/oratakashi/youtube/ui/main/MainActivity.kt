@@ -54,6 +54,10 @@ class MainActivity : AppCompatActivity() {
             ivFav.also { ivFav ->
                 ivFav.setOnClickListener {
                     try {
+//                        val uri = Uri.parse("youtubetrends://fav")
+//                        startActivity(Intent(Intent.ACTION_VIEW, uri).also {
+//                            it.putExtra("data", vpMain.currentItem)
+//                        })
                         startActivity(
                             Intent(
                                 applicationContext,

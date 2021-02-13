@@ -16,6 +16,7 @@ import com.oratakashi.youtube.favorite.utils.ImageHelper
 import eightbitlab.com.blurview.RenderScriptBlur
 import org.koin.core.context.unloadKoinModules
 
+
 class FavoriteActivity : AppCompatActivity() {
 
     private val binding: ActivityFavoriteBinding by lazy {

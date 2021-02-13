@@ -40,7 +40,9 @@ abstract class RoomDB : RoomDatabase() {
             .openHelperFactory(provideFactory())
             .build()
 
-        private fun providePassPhrase() : ByteArray = SQLiteDatabase.getBytes("dicoding".toCharArray())
-        private fun provideFactory() : SupportFactory = SupportFactory(providePassPhrase())
+        private fun providePassPhrase(): ByteArray =
+            SQLiteDatabase.getBytes("dicoding".toCharArray())
+
+        private fun provideFactory(): SupportFactory = SupportFactory(providePassPhrase())
     }
 }

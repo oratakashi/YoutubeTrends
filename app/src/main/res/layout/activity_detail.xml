@@ -89,9 +89,9 @@
                         android:layout_marginStart="@dimen/margin_16"
                         android:layout_marginTop="@dimen/margin_15"
                         android:layout_marginEnd="@dimen/margin_16"
+                        android:baselineAligned="false"
                         android:orientation="horizontal"
                         android:weightSum="4"
-                        android:baselineAligned="false"
                         app:layout_constraintTop_toBottomOf="@+id/tvInfo"
                         tools:layout_editor_absoluteX="16dp">
 
@@ -99,11 +99,11 @@
                             android:id="@+id/tvLike"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawablePadding="@dimen/padding_5"
                             android:fontFamily="@font/regular"
                             android:text="@string/foo"
                             android:textAlignment="center"
-                            android:layout_weight="1"
-                            android:drawablePadding="@dimen/padding_5"
                             android:textSize="@dimen/font_12"
                             app:drawableTopCompat="@drawable/ic_like" />
 
@@ -112,9 +112,9 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:drawablePadding="@dimen/padding_5"
                             android:fontFamily="@font/regular"
                             android:text="@string/foo"
-                            android:drawablePadding="@dimen/padding_5"
                             android:textAlignment="center"
                             android:textSize="@dimen/font_12"
                             app:drawableTopCompat="@drawable/ic_dislike" />
@@ -123,9 +123,9 @@
                             android:id="@+id/tvComment"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/regular"
                             android:layout_weight="1"
                             android:drawablePadding="@dimen/padding_5"
+                            android:fontFamily="@font/regular"
                             android:text="@string/foo"
                             android:textAlignment="center"
                             android:textSize="@dimen/font_12"
@@ -144,8 +144,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:src="@drawable/ic_fav_off"
-                                android:contentDescription="@string/title_icon" />
+                                android:contentDescription="@string/title_icon"
+                                android:src="@drawable/ic_fav_off" />
 
                             <TextView
                                 android:layout_width="match_parent"

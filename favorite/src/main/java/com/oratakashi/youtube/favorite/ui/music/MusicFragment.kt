@@ -19,7 +19,7 @@ import org.koin.core.context.loadKoinModules
 
 class MusicFragment : Fragment(), FavoriteInterface {
 
-    lateinit var binding: FragmentFavMusicBinding
+    private lateinit var binding: FragmentFavMusicBinding
 
     private val adapter: MusicAdapter by lazy {
         MusicAdapter(this)

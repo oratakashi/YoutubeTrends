@@ -14,6 +14,7 @@ interface ApiEndpoint {
         @Query("regionCode") regionCode: String = "ID",
         @Query("maxResults") maxResults: Int = 50
     ): Single<ResponseMain>
+
     @GET("videos")
     fun getTrends(
         @Query("part") part: String = "snippet,statistics,id",

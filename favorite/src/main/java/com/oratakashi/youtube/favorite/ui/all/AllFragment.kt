@@ -19,7 +19,7 @@ import org.koin.core.context.loadKoinModules
 
 class AllFragment : Fragment(), FavoriteInterface {
 
-    lateinit var binding: FragmentAllBinding
+    private lateinit var binding: FragmentAllBinding
 
     private val adapter: AllAdapter by lazy {
         AllAdapter(this)

@@ -151,8 +151,11 @@ fun generate(
 ): ItemModel {
     return ItemModel().apply {
         source.declaredMemberProperties.forEach {
+//            Log.e("debug", "Annotation class ${source.simpleName} : ${source.annotations}")
             if (it.findAnnotation<Map>() != null) {
                 val value = it.findAnnotation<Map>()
+
+//                Log.e("debug", "Converting class = ${source.simpleName} Field : ${it.name}")
 
                 if (value != null) {
                     if (value.to.isNotEmpty()) {
@@ -175,6 +178,8 @@ fun generate(
 
         statistics = data.statistics.toStatisticsModel()
         snippet = data.snippet.toSnippetModel()
+
+//        Log.e("debug", "data : $this")
     }
 }
 
@@ -184,6 +189,8 @@ fun generate(data: ResponseMain): List<ItemModel> {
     data.items.forEach {
         output.add(it.toItemModel())
     }
+
+//    Log.e("debug", "Data : $output")
 
     return output.toList()
 }

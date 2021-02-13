@@ -50,13 +50,13 @@ object CoreModule {
                         chain.proceed(request)
                     }
                 )
-                if (BuildConfig.DEBUG) addInterceptor(
+                addInterceptor(
                     ChuckerInterceptor(androidContext())
                 )
                 addInterceptor(
                     HttpLoggingInterceptor().apply {
                         level = when (BuildConfig.DEBUG) {
-                            true -> Level.BODY
+                            true -> Level.NONE
                             false -> Level.NONE
                         }
                     }

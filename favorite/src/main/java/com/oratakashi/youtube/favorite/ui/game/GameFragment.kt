@@ -18,7 +18,7 @@ import org.koin.core.context.loadKoinModules
 
 class GameFragment : Fragment(), FavoriteInterface {
 
-    lateinit var binding: FragmentFavGameBinding
+    private lateinit var binding: FragmentFavGameBinding
 
     private val adapter: GameAdapter by lazy {
         GameAdapter(this)
