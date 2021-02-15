@@ -7,6 +7,3 @@
 
 -keep class kotlin.Metadata { *; }
 -keepattributes *Annotation*,Signature,InnerClasses,EnclosingMethod
-
-#Rules untuk Main Activity Favorite
-#-keepnames class com.oratakashi.favorite.main.**

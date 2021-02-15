@@ -7,182 +7,170 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.detail.DetailActivity">
 
-    <ImageView
-        android:id="@+id/ivImage"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+        android:background="#80000000"
+        android:orientation="vertical">
 
-    <eightbitlab.com.blurview.BlurView
-        android:id="@+id/vBackground"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/ytPlayer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#80000000"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            app:enableAutomaticInitialization="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showFullScreenButton="true"
+            app:showYouTubeButton="false" />
 
-            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-                android:id="@+id/ytPlayer"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:enableAutomaticInitialization="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:showFullScreenButton="true"
-                app:showYouTubeButton="false" />
+                android:layout_height="wrap_content">
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/title_icon"
+                    android:src="@drawable/ic_detail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:layout_marginTop="@dimen/margin_16"
+                    android:layout_marginEnd="@dimen/margin_10"
+                    android:fontFamily="@font/bold"
+                    android:text="@string/foo"
+                    android:textSize="@dimen/font_18"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvInfo"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:layout_marginEnd="@dimen/margin_16"
+                    android:fontFamily="@font/regular"
+                    android:text="@string/placeholder_info_adapter"
+                    android:textSize="@dimen/font_12"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
-                    <ImageView
-                        android:id="@+id/imageView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:contentDescription="@string/title_icon"
-                        android:src="@drawable/ic_detail"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:layout_marginEnd="@dimen/margin_16"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="4"
+                    app:layout_constraintTop_toBottomOf="@+id/tvInfo"
+                    tools:layout_editor_absoluteX="16dp">
 
                     <TextView
-                        android:id="@+id/tvTitle"
+                        android:id="@+id/tvLike"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_16"
-                        android:layout_marginTop="@dimen/margin_16"
-                        android:layout_marginEnd="@dimen/margin_10"
-                        android:fontFamily="@font/bold"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/padding_5"
+                        android:fontFamily="@font/regular"
                         android:text="@string/foo"
-                        android:textSize="@dimen/font_18"
-                        app:layout_constraintEnd_toStartOf="@+id/imageView3"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:textAlignment="center"
+                        android:textSize="@dimen/font_12"
+                        app:drawableTopCompat="@drawable/ic_like" />
 
                     <TextView
-                        android:id="@+id/tvInfo"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/margin_16"
-                        android:layout_marginTop="@dimen/margin_5"
-                        android:layout_marginEnd="@dimen/margin_16"
+                        android:id="@+id/tvDislike"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/padding_5"
                         android:fontFamily="@font/regular"
-                        android:text="@string/placeholder_info_adapter"
+                        android:text="@string/foo"
+                        android:textAlignment="center"
                         android:textSize="@dimen/font_12"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+                        app:drawableTopCompat="@drawable/ic_dislike" />
+
+                    <TextView
+                        android:id="@+id/tvComment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/padding_5"
+                        android:fontFamily="@font/regular"
+                        android:text="@string/foo"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/font_12"
+                        app:drawableTopCompat="@drawable/ic_comment" />
 
                     <LinearLayout
-                        android:id="@+id/linearLayout"
-                        android:layout_width="match_parent"
+                        android:id="@+id/llFav"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_16"
-                        android:layout_marginTop="@dimen/margin_15"
-                        android:layout_marginEnd="@dimen/margin_16"
-                        android:baselineAligned="false"
-                        android:orientation="horizontal"
-                        android:weightSum="4"
-                        app:layout_constraintTop_toBottomOf="@+id/tvInfo"
-                        tools:layout_editor_absoluteX="16dp">
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:id="@+id/ivFav"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/title_icon"
+                            android:src="@drawable/ic_fav_off" />
 
                         <TextView
-                            android:id="@+id/tvLike"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:drawablePadding="@dimen/padding_5"
+                            android:layout_marginTop="@dimen/margin_5"
                             android:fontFamily="@font/regular"
-                            android:text="@string/foo"
+                            android:text="@string/title_favorite"
                             android:textAlignment="center"
-                            android:textSize="@dimen/font_12"
-                            app:drawableTopCompat="@drawable/ic_like" />
-
-                        <TextView
-                            android:id="@+id/tvDislike"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:drawablePadding="@dimen/padding_5"
-                            android:fontFamily="@font/regular"
-                            android:text="@string/foo"
-                            android:textAlignment="center"
-                            android:textSize="@dimen/font_12"
-                            app:drawableTopCompat="@drawable/ic_dislike" />
-
-                        <TextView
-                            android:id="@+id/tvComment"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:drawablePadding="@dimen/padding_5"
-                            android:fontFamily="@font/regular"
-                            android:text="@string/foo"
-                            android:textAlignment="center"
-                            android:textSize="@dimen/font_12"
-                            app:drawableTopCompat="@drawable/ic_comment" />
-
-                        <LinearLayout
-                            android:id="@+id/llFav"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            tools:ignore="UseCompoundDrawables">
-
-                            <ImageView
-                                android:id="@+id/ivFav"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:contentDescription="@string/title_icon"
-                                android:src="@drawable/ic_fav_off" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin_5"
-                                android:fontFamily="@font/regular"
-                                android:text="@string/title_favorite"
-                                android:textAlignment="center"
-                                android:textSize="@dimen/font_12" />
-                        </LinearLayout>
+                            android:textSize="@dimen/font_12" />
                     </LinearLayout>
+                </LinearLayout>
 
-                    <View
-                        android:id="@+id/view"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/size_1dp"
-                        android:layout_marginTop="@dimen/margin_16"
-                        android:background="@color/white"
-                        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-                        tools:layout_editor_absoluteX="0dp" />
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_1dp"
+                    android:layout_marginTop="@dimen/margin_16"
+                    android:background="@color/white"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                    tools:layout_editor_absoluteX="0dp" />
 
-                    <TextView
-                        android:id="@+id/tvDescription"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_16"
-                        android:layout_marginTop="@dimen/margin_16"
-                        android:layout_marginEnd="@dimen/margin_16"
-                        android:fontFamily="@font/regular"
-                        android:paddingBottom="@dimen/margin_16"
-                        android:text="@string/foo"
-                        android:textSize="@dimen/font_14"
-                        app:layout_constraintTop_toBottomOf="@+id/view" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </ScrollView>
-        </LinearLayout>
-    </eightbitlab.com.blurview.BlurView>
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:layout_marginTop="@dimen/margin_16"
+                    android:layout_marginEnd="@dimen/margin_16"
+                    android:fontFamily="@font/regular"
+                    android:paddingBottom="@dimen/margin_16"
+                    android:text="@string/foo"
+                    android:textSize="@dimen/font_14"
+                    app:layout_constraintTop_toBottomOf="@+id/view" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/ivBack"

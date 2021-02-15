@@ -54,10 +54,6 @@ class DetailActivity : AppCompatActivity() {
                 it.enableBackgroundPlayback(true)
 
             }
-            ImageHelper.getPicasso(
-                ivImage,
-                "https://forums.macrumors.com/attachments/8ce03f00-332e-49e5-a90a-430c3d10181b-jpeg.926035/"
-            )
 
             tvTitle.text = data.title
             tvDescription.text = data.description
@@ -87,18 +83,7 @@ class DetailActivity : AppCompatActivity() {
                     false -> ivFav.setBackgroundResource(R.drawable.ic_fav_off)
                 }
             })
-
-            setupBlur()
         }
-    }
-
-    private fun setupBlur() {
-        binding.vBackground.setupWith(window.decorView.findViewById(android.R.id.content))
-            .setFrameClearDrawable(window.decorView.background)
-            .setBlurAlgorithm(RenderScriptBlur(this))
-            .setBlurRadius(25f)
-            .setBlurAutoUpdate(true)
-            .setHasFixedTransformationMatrix(true)
     }
 
     private val viewModel: DetailViewModel by viewModel()

@@ -34,10 +34,6 @@ class FavoriteActivity : AppCompatActivity() {
                     ivAvatar,
                     "https://d17ivq9b7rppb3.cloudfront.net/original/jobs/fullstack_web_developer_160620212126.png"
                 )
-                getPicasso(
-                    ivImage,
-                    "https://forums.macrumors.com/attachments/8ce03f00-332e-49e5-a90a-430c3d10181b-jpeg.926035/"
-                )
             }
             vpMain.also {
                 it.adapter = FavoriteAdapter(this@FavoriteActivity)
@@ -62,8 +58,6 @@ class FavoriteActivity : AppCompatActivity() {
                 vpMain.setCurrentItem(intent.getIntExtra("data", 0), true)
             }, 200L)
         }
-
-        setupBlur()
     }
 
     private fun BubbleTabBar.setupViewPager(viewPager: ViewPager2) {
@@ -74,15 +68,6 @@ class FavoriteActivity : AppCompatActivity() {
                 tabs.setSelected(position)
             }
         })
-    }
-
-    private fun setupBlur() {
-        binding.vBackground.setupWith(window.decorView.findViewById(android.R.id.content))
-            .setFrameClearDrawable(window.decorView.background)
-            .setBlurAlgorithm(RenderScriptBlur(this))
-            .setBlurRadius(25f)
-            .setBlurAutoUpdate(true)
-            .setHasFixedTransformationMatrix(true)
     }
 
     private fun reduceDragSensitivity() {
